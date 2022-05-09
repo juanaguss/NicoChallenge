@@ -6,13 +6,17 @@ Run `conduit serve` from this directory to run the application. For running with
 
 To generate a SwaggerUI client, run `conduit document client`.
 
-## Running Application Tests
+To try out the application, open an instance of Postman and try out these two calls:
 
-To run all tests for this application, run the following in this directory:
+### Sign in:
+  Create a `POST` call aiming towards `localhost:8888/signup` and set it up to send a JSON that says something like this
+  `{"email": "a@mail.com", "password": "a"}`.
+  If it's an unregistered user, then it'll create one using those credentials. Otherwise if the user already exists, it'll return `403 FORBIDDEN`
+  
+### Log in:
+  Create a `GET` call aiming towards `localhost:8888/restricted` and set it up to send a Basic Authorization (Authorization > Type: Basic auth). Then send 
+  existing credentials, in which case it'll answer *Hola Mundo!* or, in case credentials are incorrect, it'll return `403 FORBIDDEN`.
 
-```
-pub run test
-```
 
 The default configuration file used when testing is `config.src.yaml`. This file should be checked into version control. It also the template for configuration files used in deployment.
 
